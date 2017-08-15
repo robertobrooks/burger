@@ -1,6 +1,5 @@
 var connection = require("./connection.js");
 
-// Object Relational Mapper (ORM)
 
 var orm = {
   selectAll: function(tableInput) {
