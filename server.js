@@ -1,7 +1,7 @@
 // Dependencies
 var express = require("express");
 var bodyParser = require("body-parser");
-var override = require("method-override");
+var methodOverride = require("method-override");
 var exphbs = require('express-handlebars');
 var burger = require("./models/burger.js");
 var path = require("path");
@@ -19,6 +19,8 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
 // Static directory to be served
 //app.use(express.static("./public"));
+
+app.use(methodOverride("_method"));
 
 // Routes
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
