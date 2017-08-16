@@ -1,2 +1,23 @@
-<h1>Welcome to Burger Time</h1>
-<div>If you are viewing this page, you are gonna eat a burger.</div>
+<h2>Here are the burgers</h2>
+
+<ul>
+  {{#each burgers}}
+    {{#unless this.devoured}}
+      <li>
+        {{this.id}}. {{this.burger_name}}
+        <form action="/{{this.id}}?_method=PUT" method="POST">
+          <input type="hidden" name="devoured" value="true">
+          <button type="submit">Devour!</button>
+        </form>
+      </li>
+    {{/unless}}
+  {{/each}}
+</ul>
+
+<form>
+  <div class="center">Enter a burger you want to eat, then press the Submit button</div>
+  <form action="/{{this.id}}?_method=PUT" method="POST">
+  <input type="text" id="newBurger" name="/{{this.id}}" class="mytext" />
+    <button class="center" type="submit">Submit!</button>
+  </form>
+</form>

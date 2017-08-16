@@ -1,12 +1,15 @@
 var express = require("express");
-var bodyParser = require("body-parser");
-var path = require("path");
+var router = express.Router();
+var burger = require("../models/burger.js");
 
-// Routes
-module.exports = function(app) {
+router.get("/", function(req, res) {
+    burger.selectAll(function(data) {
+    var hbsObject = { 
+         burgers: data 
+    };
+    res.render('../views/index.handlebars', hbsObject);
+});  
 
-app.get('/', function (req, res) {
-    res.render('index', {});
 });
 
-};
+module.exports = router;
